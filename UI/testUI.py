@@ -17,7 +17,7 @@ def test_search_kiril():
     with allure.step("Нажать на лупу"):
         kiril.click_loupe()
     with allure.step("Результат поиска не пустой"):
-        assert kirillica is not None
+        assert kiril is not None
     with allure.step("Закрыть браузер"):
         kiril._driver.quit()
 

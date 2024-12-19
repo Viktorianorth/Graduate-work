@@ -8,22 +8,24 @@ class search_main():
     def __init__(self, driver):
         self._driver = driver
         self._driver.get(URL_main)
+        self._driver.implicitly_wait(300)
+
 
     @allure.step("Сделать поиск на кирилице")
     def search_kiril(self):
-        self._driver.find_element(By.TAG_NAME, 'input').send_keys("бойцовский клуб")
+        self._driver.find_element(By.TAG_NAME, "input").send_keys("бойцовский клуб")
 
     @allure.step("Нажать на лупу")
     def click_loupe(self):
-        self._driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[1]/div[1]/header[1]/div[2]/div[2]/div[2]/div[1]/form[1]/div[1]/div[1]/button[1]/*[name()='svg'][1]").click()
+        self._driver.find_element(By.XPATH, "(//*[name()='path'][@fill-rule='evenodd'])[3]").click()
 
     @allure.step("Сделать поиск на латинице")
     def search_lat(self):
-        self._driver.find_element(By.TAG_NAME, 'input').send_keys("fight club")
+        self._driver.find_element(By.TAG_NAME, "input").send_keys("fight club")
 
     @allure.step("Нажать на расширенный поиск")
     def full_search(self):
-        self._driver.find_element(By.CSS_SELECTOR, ".styles_advancedSearch__uwvnd").click()
+        self._driver.find_element(By.CSS_SELECTOR, ".c1wHrX0nYR4Zk_nNlgHG").click()
 
     @allure.step("Сделать поиск по году создание фильма")
     def search_reliz(self):
@@ -39,4 +41,4 @@ class search_main():
 
     @allure.step("Сделать поиск по месту рождения актера")
     def search_birthplace(self):
-        self._driver.find_element(By.ID, "location").send_keys("Ирландия")
+        self._driver.find_element(By.XPATH, "(//input[@id='location'])[1]").send_keys("Ирландия")
